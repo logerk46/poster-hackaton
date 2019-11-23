@@ -12,6 +12,8 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
     userCount: number;
     blocks;
 
+    allSum: number;
+
     counter = Array;
 
     constructor() {
@@ -81,6 +83,7 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
             ]
         }
         this.blocks = [];
+        this.allSum = this.orderObject['payed_sum'];
     }
 
     ngOnInit(): void {
@@ -107,7 +110,7 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
                             event.container.data,
                             event.previousIndex,
                             event.currentIndex);
-            console.log(event.container.data)
+            this.allSum -= event.container.data[event.currentIndex].price;
         }
       }
 }

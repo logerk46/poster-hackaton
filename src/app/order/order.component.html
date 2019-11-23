@@ -18,7 +18,7 @@
             </div>
             <div class="order-sum text-center">
                 <span>
-                    {{ orderObject.payed_sum}} грн
+                    {{ allSum }} грн
                 </span>
             </div>
             <div class="user-count col-md-12">
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="user-orders h-100 col-12 row text-center">
-                <mat-card *ngFor="let block of blocks; let i = index" class="col-md-3 ml-2">
+                <mat-card *ngFor="let block of blocks; let i = index" class="col-md-4 ml-1">
                     <mat-card-header>
                         <mat-card-title>Гость {{i + 1}}</mat-card-title>
                     </mat-card-header>
@@ -43,8 +43,13 @@
                         #subjectList="cdkDropList" [cdkDropListData]="blocks[i]" (cdkDropListDropped)="drop($event)">
                         <div>
                             Заказ:
-                            <div *ngFor="let item of blocks[i]">
-                                {{item.name}}
+                            <div>
+                                <span *ngFor="let productItem of blocks[i]" cdkDrag>
+                                    <button mat-raised-button
+                                        color="accent">
+                                        {{productItem.name}} | {{productItem.price}} грн
+                                    </button>
+                                </span>
                             </div>
                         </div>
                     </div>

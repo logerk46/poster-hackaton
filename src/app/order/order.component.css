@@ -26,3 +26,11 @@
 .user-orders {
     justify-content: center;
 }
+
+::ng-deep .subj-container span {
+    margin-left: 15px;
+}
+
+::ng-deep .subj-container button {
+    margin-top: 15px;
+}

@@ -6,7 +6,9 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 import { AppMaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.components';
+import { AuthComponent } from './auth/auth.component';
+import { CheckOrderComponent } from './order/order.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocalStorageService } from './services/local-storage.service';
 
@@ -14,7 +16,8 @@ import { LocalStorageService } from './services/local-storage.service';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    CheckOrderComponent
   ],
   imports: [
     BrowserModule,

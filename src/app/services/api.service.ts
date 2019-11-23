@@ -28,6 +28,14 @@ export class ApiService {
         return this.posterAppUrl + `/auth?application_id=${this.appId}&redirect_uri=http://localhost:4200&response_type=code`
     }
 
+    // public sendToken(formData) {
+    //     return this.httpClient.post('localhost:1919/auth', formData, httpOptions)
+    //         .pipe(
+    //             tap(
+    //                 resp => resp
+    //             )
+    //         )
+    // }
     public sendToken(formData) {
         return this.httpClient.post('localhost:1919/auth', formData, httpOptions)
             .pipe(

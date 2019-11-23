@@ -1,0 +1,28 @@
+::ng-deep .product-list button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.order-sum {
+    font-size: 19px;
+}
+
+.order-card {
+    margin-top: 50px;
+    min-height: 350px;
+}
+
+.user-count button {
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 50%;
+}
+
+::ng-deep .user-orders .mat-card {
+    margin-top: 15px;
+    min-height: 50px;
+}
+
+.user-orders {
+    justify-content: center;
+}

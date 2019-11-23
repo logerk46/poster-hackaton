@@ -1,0 +1,55 @@
+<div class="order-view h-100">
+    <div class="col-10 offset-1" cdkDropListGroup>
+        <mat-card class="order-card h-100 col-md-12">
+            <div class="product-list row">
+                <!-- <span *ngFor="let productItem of orderObject.products">
+                    <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent">
+                        {{productItem.name}} | {{productItem.price}} грн
+                    </button>
+                </span> -->
+                <div cdkDropList #pendingList="cdkDropList" [cdkDropListData]="orderObject.products" class="item-list"
+                    (cdkDropListDropped)="drop($event)">
+                    <span *ngFor="let productItem of orderObject.products" cdkDrag>
+                        <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent">
+                            {{productItem.name}} | {{productItem.price}} грн
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="order-sum text-center">
+                <span>
+                    {{ orderObject.payed_sum}} грн
+                </span>
+            </div>
+            <div class="user-count col-md-12">
+                <div class="col-12 row">
+                    <mat-form-field>
+                        <mat-label>Сколько вас?</mat-label>
+                        <mat-select [(value)]="userCount">
+                            <mat-option *ngFor='let loop of "12345".split("")' [value]="loop">
+                                {{loop}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <button mat-raised-button color="accent" (click)="createUserLists(userCount)">ок!</button>
+                </div>
+            </div>
+            <div class="user-orders h-100 col-12 row text-center">
+                <mat-card *ngFor="let block of blocks; let i = index" class="col-md-3 ml-2">
+                    <mat-card-header>
+                        <mat-card-title>Гость {{i + 1}}</mat-card-title>
+                    </mat-card-header>
+                    <div class="subj-container" cdkDropListOrientation="horizontal" cdkDropList
+                        #subjectList="cdkDropList" [cdkDropListData]="blocks[i]" (cdkDropListDropped)="drop($event)">
+                        <div>
+                            Заказ:
+                            <div *ngFor="let item of blocks[i]">
+                                {{item.name}}
+                            </div>
+                        </div>
+                    </div>
+                </mat-card>
+            </div>
+        </mat-card>
+    </div>
+</div>

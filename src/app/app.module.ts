@@ -12,14 +12,15 @@ import { CheckOrderComponent } from './order/order.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocalStorageService } from './services/local-storage.service';
 import { CheckoutOrderComponent } from './checkout/checkout.component';
-
+import { CheckoutModalComponent } from './checkour-modal/checkout-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     CheckOrderComponent,
-    CheckoutOrderComponent
+    CheckoutOrderComponent,
+    CheckoutModalComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +31,7 @@ import { CheckoutOrderComponent } from './checkout/checkout.component';
     StorageServiceModule
   ],
   providers: [LocalStorageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [CheckoutModalComponent]
 })
 export class AppModule { }

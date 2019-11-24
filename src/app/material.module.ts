@@ -4,7 +4,8 @@ import {
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
 } from '@angular/material';
 import {
     DragDropModule
@@ -17,7 +18,8 @@ import {
         MatCardModule,
         MatToolbarModule,
         DragDropModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule
     ],
     exports: [
         MatInputModule,
@@ -25,7 +27,8 @@ import {
         MatCardModule,
         MatToolbarModule,
         DragDropModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDialogModule
     ]
 })
 export class AppMaterialModule { }

@@ -59,3 +59,42 @@
     min-height: 100px;
     background-color: #efefef;
 }
+
+::ng-deep .order-modal {
+    justify-content: center;
+    min-height: 300px;
+}
+
+::ng-deep .order-modal .row {
+    justify-content: center !important;
+}
+
+::ng-deep .order-modal img:nth-child(2) {
+    height: 50%;
+    margin-top: 10%;
+}
+
+::ng-deep .order-payments .row span:first-child {
+    padding-top: 30px;
+    margin-right: 35px;
+}
+
+::ng-deep .order-payments .row span {
+    min-height: 150px;
+}
+
+::ng-deep .order-payments .row span:hover {
+    background-color: lightgray;
+}
+
+::ng-deep .active {
+    background-color: lightgray;
+}
+
+::ng-deep .payment-button {
+    font-size: 24px;
+    padding: 15px !important;
+    margin-top: 25px !important;
+    background-color: #303030;
+    color: white;
+}

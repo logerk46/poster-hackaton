@@ -1,0 +1,16 @@
+<div class="order-modal text-center">
+    <div class="row">
+        <h2>Выберите способ оплаты:</h2>
+        <div class="order-payments col-md-12">
+            <div class="row">
+                <span (click)="choosePayment(1)" [ngClass]="selectedPayment == 1 ? 'active' : ''">
+                    <img src="../../assets/images/monobank_logo.jpg">
+                </span>
+                <span (click)="choosePayment(2)" [ngClass]="selectedPayment == 2 ? 'active' : ''">
+                    <img src="../../assets/images/liqpay.png">
+                </span>
+            </div>
+            <button mat-flat-button class="payment-button" *ngIf="selectedPayment">Оплатить</button>
+        </div>
+    </div>
+</div>

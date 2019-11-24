@@ -14,11 +14,8 @@ export class LocalStorageService {
     ) {}
 
     public storeOnLocalStorage(userInfo): void {
-        const currentUser = this.storage.get(STORAGE_KEY);
 
-        currentUser.push(userInfo);
-
-        this.storage.set(STORAGE_KEY, currentUser);
+        this.storage.set(STORAGE_KEY, userInfo);
         
         console.log(this.storage.get(STORAGE_KEY) || 'Local storage is empty!')
     }

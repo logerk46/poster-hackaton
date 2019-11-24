@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ApiService } from '../services/api.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
     selector: 'auth-view',
@@ -16,16 +17,18 @@ export class AuthComponent implements OnInit, OnDestroy {
 
     constructor(
         private apiService: ApiService,
-        private router: ActivatedRoute
+        private activeRouter: ActivatedRoute,
+        private router: Router,
+        private localStorage: LocalStorageService
     ) {
         this.urlAuth = this.apiService.authAppLink();
     }
 
     ngOnInit(): void {
-        if(this.router.snapshot.queryParams['code']){
-            this.codeApp = this.router.snapshot.queryParams['code'];
-            this.accountApp = this.router.snapshot.queryParams['account'];
-            this.getToken();
+        if(this.activeRouter.snapshot.queryParams['code']){
+            this.codeApp = this.activeRouter.snapshot.queryParams['code'];
+            this.accountApp = this.activeRouter.snapshot.queryParams['account'];
+            this.getToken()
         }
     }
 
@@ -38,11 +41,12 @@ export class AuthComponent implements OnInit, OnDestroy {
             application_id: this.apiService.appId,
             application_secret: this.apiService.appSecret,
             grant_type: 'authorization_code',
-            redirect_url: 'localhost:4200/order',
+            redirect_uri: 'http://localhost:4200/auth',
             code: this.codeApp
         })
         .subscribe(resp => {
-            console.log(resp)
+            this.localStorage.storeOnLocalStorage(resp);
+            this.router.navigate(['/check']);
         }, error => {
             console.log(error);
         })

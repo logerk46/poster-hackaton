@@ -1,28 +1,38 @@
 <div class="order-view h-100">
     <div class="col-10 offset-1" cdkDropListGroup>
         <mat-card class="order-card h-100 col-md-12">
+            <mat-card-header>
+                <mat-card-title>
+                    Заказ № {{orderObject.order_id}} Номер столика: 5 Общая сумма: {{allSum}}
+                </mat-card-title>
+            </mat-card-header>
+
             <div class="product-list row">
                 <!-- <span *ngFor="let productItem of orderObject.products">
                     <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent">
                         {{productItem.name}} | {{productItem.price}} грн
                     </button>
                 </span> -->
-                <div cdkDropList #pendingList="cdkDropList" [cdkDropListData]="orderObject.products" class="item-list"
-                    (cdkDropListDropped)="drop($event)">
+                <div cdkDropList #pendingList="cdkDropList" id="order-product-list"
+                    [cdkDropListData]="orderObject.products" class="item-list" (cdkDropListDropped)="drop($event)">
                     <span *ngFor="let productItem of orderObject.products" cdkDrag>
-                        <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent">
-                            {{productItem.name}} | {{productItem.price}} грн
+                        <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent"
+                            class="products-button">
+                            {{productItem.product_name}} | {{productItem.price}} грн
                         </button>
                     </span>
                 </div>
             </div>
-            <div class="order-sum text-center">
-                <span>
-                    {{ allSum }} грн
-                </span>
-            </div>
             <div class="user-count col-md-12">
-                <div class="col-12 row">
+                <div class="col-12 row buttons-choose">
+                    <button mat-raised-button color="accent" (click)="makePayment()">
+                        Оплатить
+                    </button>
+                    <button mat-raised-button color="accent" (click)="partPayments=true">
+                        Разбить на части
+                    </button>
+                </div>
+                <div class="col-12 row" *ngIf="partPayments">
                     <mat-form-field>
                         <mat-label>Сколько вас?</mat-label>
                         <mat-select [(value)]="userCount">
@@ -33,21 +43,22 @@
                     </mat-form-field>
                     <button mat-raised-button color="accent" (click)="createUserLists(userCount)">ок!</button>
                 </div>
+
             </div>
             <div class="user-orders h-100 col-12 row text-center">
                 <mat-card *ngFor="let block of blocks; let i = index" class="col-md-4 ml-1">
                     <mat-card-header>
-                        <mat-card-title>Гость {{i + 1}}</mat-card-title>
+                        <mat-card-title>Гость {{i + 1}} Скока денег: {{ block.sum }}</mat-card-title>
                     </mat-card-header>
                     <div class="subj-container" cdkDropListOrientation="horizontal" cdkDropList
-                        #subjectList="cdkDropList" [cdkDropListData]="blocks[i]" (cdkDropListDropped)="drop($event)">
+                        #subjectList="cdkDropList" [cdkDropListData]="blocks[i].products"
+                        (cdkDropListDropped)="drop($event)">
                         <div>
                             Заказ:
-                            <div>
-                                <span *ngFor="let productItem of blocks[i]" cdkDrag>
-                                    <button mat-raised-button
-                                        color="accent">
-                                        {{productItem.name}} | {{productItem.price}} грн
+                            <div class="products-list">
+                                <span *ngFor="let productItem of blocks[i].products" cdkDrag>
+                                    <button mat-raised-button class="products-button" color="accent">
+                                        {{productItem.product_name}} | {{productItem.price}} грн
                                     </button>
                                 </span>
                             </div>

@@ -2,14 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 
-const apiUrl: string = '';
-const httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json; charset=utf-8',
-        'Access-Control-Allow-Methods': 'POST',
-        'Access-Control-Allow-Origin': '*'
-    })
-} 
 
 @Injectable({
     providedIn: 'root',
@@ -25,7 +17,7 @@ export class ApiService {
     }
 
     public authAppLink() {
-        return this.posterAppUrl + `/auth?application_id=${this.appId}&redirect_uri=http://localhost:4200&response_type=code`
+        return this.posterAppUrl + `/auth?application_id=${this.appId}&redirect_uri=http://localhost:4200/auth&response_type=code`
     }
 
     // public sendToken(formData) {
@@ -37,7 +29,26 @@ export class ApiService {
     //         )
     // }
     public sendToken(formData) {
-        return this.httpClient.post('localhost:1919/auth', formData, httpOptions)
+        return this.httpClient.post('http://127.0.0.1:8000/auth', formData, {
+            headers:
+            {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        })
+            .pipe(
+                tap(
+                    resp => resp
+                )
+            )
+    }
+
+    public getOpenCheck(formData) {
+        return this.httpClient.post('http://127.0.0.1:8000/openCheck', formData, {
+            headers:
+            {
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        })
             .pipe(
                 tap(
                     resp => resp

@@ -11,13 +11,15 @@ import { CheckOrderComponent } from './order/order.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocalStorageService } from './services/local-storage.service';
+import { CheckoutOrderComponent } from './checkout/checkout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    CheckOrderComponent
+    CheckOrderComponent,
+    CheckoutOrderComponent
   ],
   imports: [
     BrowserModule,

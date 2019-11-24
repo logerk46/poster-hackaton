@@ -126,10 +126,8 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
         if (this.partPayments) {
             this.router.navigate(['/checkout']);
         } else {
-
+            this.openDialog();
         }
-
-        this.openDialog();
     }
 
     openDialog() {

@@ -91,7 +91,7 @@
     background-color: lightgray;
 }
 
-::ng-deep .payment-button {
+ .payment-button {
     font-size: 24px;
     padding: 15px !important;
     margin-top: 25px !important;

@@ -1,0 +1,32 @@
+<div class="checkout_wrapper">
+    <div class="col-8 offset-2">
+        <mat-card class="checks_wrapper">
+            <mat-card-title>
+                Кол-во чеков: {{checkList.response.length}}
+            </mat-card-title>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-4 check_wrapper" *ngFor="let check of checkList.response; let j = index;">
+                        <h3>№ {{j+1}} Сумма чека: {{check.payed_sum}}</h3>
+                        <div class="products_wrapper">
+                            <div class="row">
+                                <span *ngFor="let product of check.products; let i = index;">
+                                    <span class="product-counter">{{i + 1}}.</span>
+                                    <button mat-raised-button color="accent" class="products-button">
+                                        {{product.product_name | slice:0:24}} | {{product.price}} грн
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="payment-button">
+                            <button mat-raised-button>
+                                Оплатить
+                            </button>
+                            или <a href="">поделиться ссылкой</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

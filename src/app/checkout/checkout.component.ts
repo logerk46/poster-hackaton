@@ -13,24 +13,24 @@ export class CheckoutOrderComponent implements OnInit {
                 "response": [
                     {
                         "transaction_id": 1,
-                        "payed_sum": 256,
+                        "payed_sum": 170,
                         "products": [
                             {
-                                "product_name": "Венский суп Гуляш",
-                                "price": 85
+                                "product_name": "Filtr kofe",
+                                "price": 321
                             },
                             {
-                                "product_name": "Венский суп Гуляш",
-                                "price": 85
+                                "product_name": "Borjomi 0.5l",
+                                "price": 93
                             },
                         ]
                     },
                     {
                         "transaction_id": 2,
-                        "payed_sum": 56,
+                        "payed_sum": 33,
                         "products": [
                             {
-                                "product_name": "Соус BBQ к блюду",
+                                "product_name": "Filtr kofe",
                                 "price": 15
                             },
                             {
@@ -41,24 +41,19 @@ export class CheckoutOrderComponent implements OnInit {
                     },
                     {
                         "transaction_id": 3,
-                        "payed_sum": 82,
+                        "payed_sum": 430,
                         "products": [
                             {
-                                "product_name": "Фильтр кофе",
+                                "product_name": "Tart limonniy",
                                 "price": 25
                             },
                             {
-                                "product_name": "Медальоны из телятины с овощами гриль",
+                                "product_name": "Tortik napoleon",
                                 "price": 240
                             },
                             {
-                                "product_name": "Хлеб белый собственной выпечки",
+                                "product_name": "Croissant with chocolate",
                                 "price": 15
-                            },
-                            {
-                                "product_name": "Кальян",
-                                "modificator_name": "на соке",
-                                "price": 150
                             },
                         ]
                     }

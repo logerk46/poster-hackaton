@@ -1,9 +1,9 @@
 <div class="order-view h-100">
     <div class="col-10 offset-1" cdkDropListGroup>
-        <mat-card class="order-card h-100 col-md-12">
+        <mat-card class="order-card h-100 col-md-12" *ngIf="loadChecks">
             <mat-card-header>
                 <mat-card-title>
-                    Заказ № {{orderObject.order_id}} Номер столика: 5 Общая сумма: {{allSum}}
+                    Заказ № {{orderObject.transaction_id}} Номер столика: {{orderObject.table_id}} Общая сумма: {{this.orderObject['check_sum'].toString().replace('00', '')}}
                 </mat-card-title>
             </mat-card-header>
 
@@ -18,7 +18,7 @@
                     <span *ngFor="let productItem of orderObject.products" cdkDrag>
                         <button *ngFor="let product of counter(productItem.count)" mat-raised-button color="accent"
                             class="products-button">
-                            {{productItem.product_name}} | {{productItem.price}} грн
+                            {{productItem.product_name}} | {{productItem.product_sum.toString().replace('00', '')}} грн
                         </button>
                     </span>
                 </div>
@@ -62,7 +62,7 @@
                             <div class="products-list">
                                 <span *ngFor="let productItem of blocks[i].products" cdkDrag>
                                     <button mat-raised-button class="products-button" color="accent">
-                                        {{productItem.product_name}} | {{productItem.price}} грн
+                                        {{productItem.product_name}} | {{productItem.product_sum.toString().replace('00', '')}} грн
                                     </button>
                                 </span>
                             </div>

@@ -19,6 +19,8 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
     partPayments: boolean = false;
     doPartPayments: boolean = false;
 
+    loadChecks: boolean = false;
+
     allSum: number;
 
     counter = Array;
@@ -28,60 +30,22 @@ export class CheckOrderComponent implements OnInit, OnDestroy {
         private router: Router,
         private dialog: MatDialog
     ) {
-        this.orderObject =
-            {
-                "order_id": 30139,
-                "transaction_id": 1484233370643,
-                "date_open": 1484233375235,
-                "payed_sum": 633,
-                "products": [
-                    {
-                        "product_name": "Венский суп Гуляш",
-                        "price": 85
-                    },
-                    {
-                        "product_name": "Венский суп Гуляш",
-                        "price": 85
-                    },
-                    {
-                        "product_name": "Фильтр кофе",
-                        "price": 25
-                    },
-                    {
-                        "product_name": "Медальоны из телятины с овощами гриль",
-                        "price": 240
-                    },
-                    {
-                        "product_name": "Хлеб белый собственной выпечки",
-                        "price": 15
-                    },
-                    {
-                        "product_name": "Кальян",
-                        "modificator_name": "на соке",
-                        "price": 150
-                    },
-                    {
-                        "product_name": "Соус BBQ к блюду",
-                        "price": 15
-                    },
-                    {
-                        "product_name": "Pepsi 300 ml",
-                        "price": 18
-                    }
-                ]
-            },
-            this.blocks = [];
-        this.allSum = this.orderObject['payed_sum'];
+        this.blocks = [];
         this.apiService.getOpenCheck('1')
             .subscribe(
                 resp => {
-                    console.log(resp);
+                    this.orderObject = resp[0];
+                    this.loadChecks = true;
+                    console.log(this.orderObject);
                 }
             )
+
     }
 
     ngOnInit(): void {
-
+        if (this.loadChecks) {
+            this.allSum = this.orderObject['check_sum'];
+        }
     }
 
     ngOnDestroy(): void {

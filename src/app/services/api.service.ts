@@ -43,10 +43,11 @@ export class ApiService {
     }
 
     public getOpenCheck(formData) {
-        return this.httpClient.post('http://127.0.0.1:8000/openCheck', formData, {
+        return this.httpClient.get('http://localhost:1919/api/posters/checks?spotId=1&tableId=6', {
             headers:
             {
-                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Access-Control-Allow-Origin': '*'
             }
         })
             .pipe(
